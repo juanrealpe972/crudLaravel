@@ -9,9 +9,9 @@ class Item extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
+        'nombre',
         'apellido',
-        'email',
         'telefono',
+        'email',
     ];
 }

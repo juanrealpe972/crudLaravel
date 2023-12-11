@@ -1,36 +1,37 @@
 @extends('layouts.template')
 @section('contenido')
-
-    <main>
-        <div class="container p-4 m-3">
-            <h2>Listado de Items</h2>
-            <a href="{{ url('items/create') }}" class="p-2 bg-blue-500 text-white">Nuevo Item</a>
-            <table>
+    <div class="container m-4">
+        <h2 class="mb-4">Lista de Items</h2>
+        <a href="{{ url('items/create') }}" class="rounded-lg p-3 text-white bg-cyan-900 hover:bg-cyan-600"> Nuevo Items</a>
+        <div class="containe mt-8">
+            <table class="w-9/12 border-collapse">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Telefono</th>
-                        <th>Correo</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
+                        <th class="border-2 border-solid text-black p-2 bg-neutral-200 text-base">#</th>
+                        <th class="border-2 border-solid text-black p-2 bg-neutral-200 text-base">Nombre</th>
+                        <th class="border-2 border-solid text-black p-2 bg-neutral-200 text-base">Apellido</th>
+                        <th class="border-2 border-solid text-black p-2 bg-neutral-200 text-base">Telefono</th>
+                        <th class="border-2 border-solid text-black p-2 bg-neutral-200 text-base">Correo</th>
+                        <th class="border-2 border-solid text-black p-2 bg-neutral-200 text-base">Editar</th>
+                        <th class="border-2 border-solid text-black p-2 bg-neutral-200 text-base">Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($items as $item)
                         <tr>
-                            <td>{{ $item->id }}</td>
-                            <td>{{ $item->nombre }}</td>
-                            <td>{{ $item->apellido }}</td>
-                            <td>{{ $item->telefono }}</td>
-                            <td>{{ $item->email }}</td>
-                            <td><a href="{{ url('item/' . $item->id . '/edit') }}">Editar</a></td>
-                            <td>
-                                <form action="{{ url('item/') . $item->id }}" method="POST">
-                                    @method('DELETE')
+                            <td class="border-2 border-solid text-black p-2 text-center">{{ $item->id }}</td>
+                            <td class="border-2 border-solid text-black p-2 left-0">{{ $item->nombre }}</td>
+                            <td class="border-2 border-solid text-black p-2 left-0">{{ $item->apellido }}</td>
+                            <td class="border-2 border-solid text-black p-2 left-0">{{ $item->telefono }}</td>
+                            <td class="border-2 border-solid text-black p-2 left-0">{{ $item->email }}</td>
+                            <td class="border-2 border-solid text-black p-2 text-center">
+                                <a href="{{ url('items/' . $item->id . '/edit') }}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Editar</a>
+                            </td>
+                            <td class="border-2 border-solid text-black p-2 text-center">
+                                <form action="{{ url('items/' . $item->id) }}" method="post">
                                     @csrf
-                                    <button type="submit">Eliminar</button>
+                                    @method('DELETE')
+                                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded">Eliminar</button>
                                 </form>
                             </td>
                         </tr>
@@ -38,4 +39,5 @@
                 </tbody>
             </table>
         </div>
-    </main>
+    </div>
+@endsection

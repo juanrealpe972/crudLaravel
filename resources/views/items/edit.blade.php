@@ -1,29 +1,38 @@
 @extends('layouts.template')
 @section('contenido')
-<main>
-    <div class="py-4">
-        <h2>Registrar item</h2>
-        <form action="{{ url('item').$item->id }}" method="POST">
+<main class="flex justify-center flex-col items-center">
+    <h1 class="pt-4 text-3xl mb-3 font-bold">Editar item</h1>
+    <div>
+        <form action="{{ url('items/'.$item->id) }}" method="post">
             @method('PUT')
             @csrf
-            <div class="flex">
-                <label for="item">Nombre</label>
-                <input type="text" name="nombre" id="nombre" class="bg-red-50 w-48 h-3" placeholder="Nombre" value="{{ $item->nombre }}" required>
+            <div class="flex flex-col">
+                <label for="nombre">Nombre</label>
+                <div>
+                    <input type="text" name="nombre" id="nombre" class="border border-gray-300 rounded px-2 py-1 text-sm text-gray-600" placeholder="Nombre" value="{{ $item->nombre }}" required>
+                </div>
             </div>
-            <div class="flex">
-                <label for="item">Apellido</label>
-                <input type="text" name="apellido" id="apellido" class="bg-red-50 w-48 h-3" placeholder="apellido" value="{{ $item->apellido }}" required>
+            <div class="flex flex-col">
+                <label for="apellido">Apellido</label>
+                <div>
+                    <input type="text" name="apellido" id="apellido" class="border border-gray-300 rounded px-2 py-1 text-sm text-gray-600" placeholder="apellido" value="{{ $item->apellido }}" required>
+                </div>
             </div>
-            <div class="flex">
-                <label for="item">Telefono</label>
-                <input type="text" name="telefono" id="telefono" class="bg-red-50 w-48 h-3" placeholder="Telefono" value="{{ $item->telefono }}" required>
+            <div class="flex flex-col">
+                <label for="telefono">Telefono</label>
+                <div>
+                    <input type="number" name="telefono" id="telefono" class="border border-gray-300 rounded px-2 py-1 text-sm text-gray-600" placeholder="Telefono" value="{{ $item->telefono }}" required>
+                </div>
             </div>
-            <div class="flex">
-                <label for="item">GMAIL</label>
-                <input type="text" name="correo" id="correo" class="bg-red-50 w-48 h-3" placeholder="GMAIL" value="{{ $item->correo }}" required>
+            <div class="flex flex-col mb-4">
+                <label for="email">GMAIL</label>
+                <div>
+                    <input type="email" name="email" id="email" class="border border-gray-300 rounded px-2 py-1 text-sm text-gray-600" placeholder="GMAIL" value="{{ $item->email }}" required>
+                </div>
             </div>
-            <a href="{{ url('item') }}">Regresar</a>
-            <button type="submit">Guardar</button>
+            <a class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded" href="{{ url('items') }}">Regresar</a>
+            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1.5 px-2 rounded" type="submit">Guardar</button>
         </form>
     </div>
 </main>
+@endsection

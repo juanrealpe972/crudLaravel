@@ -13,7 +13,7 @@ class InsertitemController extends Controller
     public function index()
     {
         $items = Item::all();
-        return view('items.index', ["items" => $items]);
+        return view('items.index', ['items' => $items]);
     }
 
     /**
@@ -30,17 +30,18 @@ class InsertitemController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "nombre" => 'required',
+            'nombre' => 'required|max:255',
             'apellido' => 'required|max:255',
-            "telefono" => "required",
-            "email" => "nullable|email",
+            'telefono' => 'required',
+            'email' => 'required|unique:items|max:255',
         ]);
 
         $item = new Item();
-        $item->nombre = $request->input("nombre");
+        $item->nombre = $request->input('nombre');
         $item->apellido = $request->input('apellido');
         $item->telefono = $request->input('telefono');
         $item->email = $request->input('email');
+        $item->save();
 
         return view('items.index');
     }
@@ -68,17 +69,20 @@ class InsertitemController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            "nombre" => 'required'.$id,
+            "nombre" => 'required|max:255',
             'apellido' => 'required|max:255',
-            "telefono" => "required",
-            "email" => "nullable|email",
+            "telefono" => "required|max:255",
+            "email" => "required|max:255|unique:items,email".$id,
         ]);
 
         $item = Item::find($id);
-        $item->nombre = $request->input("nombre");
+        $item->nombre = $request->input('nombre');
         $item->apellido = $request->input('apellido');
         $item->telefono = $request->input('telefono');
         $item->email = $request->input('email');
+        $item->save();
+
+        return view('items.index');
     }
 
     /**
@@ -88,6 +92,6 @@ class InsertitemController extends Controller
     {
         $item = Item::find($id);
         $item->delete();
-        return redirect('index');
+        return redirect('items');
     }
 }
