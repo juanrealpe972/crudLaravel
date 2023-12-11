@@ -3,8 +3,8 @@
 @section('contenido')
     <div class="md:flex md:justify-center md:items-center">
         <div class="md:w-80 bg-white rounded-lg shadow-xl mt-7">
-            <div class="w-full h-9 flex items-center rounded-t-md bg-cyan-600 m text-white">
-                <a class="ml-6" href="/"><i><-</i></a>
+            <div class="w-full h-9 flex items-center rounded-t-md bg-indigo-600 m text-white">
+                <a class="ml-6 mr-3" href="/"><i>&#11164;</i></a>
                 <label for="">Volver</label>
             </div>
             <div class=" px-6 py-4">
@@ -49,7 +49,7 @@
                     </div>
 
                     <input type="submit" value="Crear cuenta"
-                        class="bg-cyan-900 hover:bg-cyan-600 transition-colors cursor-pointer uppercase font-semibold w-full p-2 text-white rounded-lg">
+                        class="bg-indigo-900 hover:bg-indigo-600 transition-colors cursor-pointer uppercase font-semibold w-full p-2 text-white rounded-lg">
                 </form>
             </div>
         </div>

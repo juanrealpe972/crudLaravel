@@ -1,18 +1,25 @@
 @extends('layouts.template')
 
 @section('contenido')
-    <div class="w-full flex justify-center ">
-        <div class="flex items-center justify-center bg-slate-100 w-5/12 p-3 rounded-3xl mt-36">
-            <div class="p-6 flex items-center justify-center flex-col">
-                <div class="flex flex-col text pl-3">
-                    <label class="">Tienes cuenta?</label>
-                    <a href="{{ route('login') }}" class="p-2 w-36 h-auto text-center bg-cyan-900 hover:bg-cyan-600 hover:text-white rounded-xl">Iniciar Sesión</a>
-                </div>
-                <div class="flex flex-col pl-3">
-                    <label class="">No tienes cuenta?</label>
-                    <a href="{{ route('register.index') }}" class="p-2 w-36 h-auto text-center bg-cyan-900 hover:bg-cyan-600 hover:text-white rounded-xl">Crear cuenta</a>
+    <section>
+        <div class="flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-xs w-full space-y-8">
+                <div>
+                    <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                        alt="Workflow">
+                    <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Sistema CRUD</h2>
+                    <p class="mt-2 text-center text-sm text-gray-600">
+                        o <a href="{{ route('register.index') }}"
+                            class="font-medium text-indigo-600 hover:text-indigo-500">regístrate</a>
+                    </p>
+
+                    <p class="text-center my-3">Este es un prototipo de crud a través de laravel y tailwindcss que te ayudara a entender todas las funciones que siguen los sistemas para que se cumplan especificaciones de crear, leer, actualizar y borrar datos de una base de datos, cabe recalcar que este prototipo no utilizo boostrap.</p>
+
+                    <a type="submit" href="{{ route('login') }}"
+                        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Iniciar sesión</a>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 @endsection
